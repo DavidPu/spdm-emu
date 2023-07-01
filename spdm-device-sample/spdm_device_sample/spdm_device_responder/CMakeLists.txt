@@ -9,7 +9,7 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
         elseif(TOOLCHAIN STREQUAL "ARM_GNU")
             SET(CMAKE_EXE_LINKER_FLAGS "-nostdlib -flto -Wl,--entry,ModuleEntryPoint,--undefined=__udivti3")
         elseif(TOOLCHAIN STREQUAL "AARCH64_GCC")
-            SET(CMAKE_EXE_LINKER_FLAGS "-nostdlib -flto -Wl,--entry,ModuleEntryPoint")
+            SET(CMAKE_EXE_LINKER_FLAGS "-static -g")
         endif()
     endif()
 elseif(CMAKE_SYSTEM_NAME MATCHES "Windows")
@@ -26,12 +26,12 @@ INCLUDE_DIRECTORIES(${SPDM_DEVICE_DIR}/include
 )
 
 SET(src_spdm_device_responder
-    spdm_responder_init.c
-    spdm_responder_main.c
-    compiler_stub.c
-    support.c
+    spdm_responder_init_emu.c
+    spdm_responder_main_emu.c
+    support_emu.c
     spdm_responder_pci_doe.c
     pci.c
+    sock_io.c
 )
 
 SET(spdm_device_responder_LIBRARY

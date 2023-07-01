@@ -20,6 +20,7 @@ void spdm_dispatch(void)
     void *spdm_context;
     libspdm_return_t status;
 
+    pirntf("%s:%d\n", __func__, __LINE__);
     spdm_context = spdm_server_init();
     if (spdm_context == NULL) {
         return;
@@ -45,9 +46,9 @@ void spdm_dispatch(void)
  * @return This function should never return.
  *
  **/
-void ModuleEntryPoint(void)
+int main(void)
 {
     spdm_dispatch();
 
-    return;
+    return 0;
 }

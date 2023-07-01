@@ -181,16 +181,12 @@ void *spdm_server_init(void)
     void *data;
     size_t data_size;
 
-    printf("%s:%d\n", __func__, __LINE__);
-
     spdm_context = (void *)malloc(libspdm_get_context_size());
     if (spdm_context == NULL) {
         return NULL;
     }
-    printf("%s:%d\n", __func__, __LINE__);
     libspdm_init_context(spdm_context);
 
-    printf("%s:%d\n", __func__, __LINE__);
     libspdm_register_device_io_func(spdm_context, spdm_responder_send_message,
                                     spdm_responder_receive_message);
     libspdm_register_transport_layer_func(spdm_context,

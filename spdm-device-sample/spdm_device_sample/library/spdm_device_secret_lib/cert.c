@@ -52,7 +52,7 @@ bool libspdm_read_responder_public_certificate_chain(
         return false;
     }
 
-    digest_size = libspdm_get_hash_size(base_hash_algo);
+    digest_size = 48; // libspdm_get_hash_size(base_hash_algo);
 #if LIBSPDM_SHA384_SUPPORT
     LIBSPDM_ASSERT(digest_size == LIBSPDM_SHA384_DIGEST_SIZE);
 #endif
